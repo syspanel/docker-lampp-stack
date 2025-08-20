@@ -1,7 +1,8 @@
 # Base image: Ubuntu 24.04
 FROM ubuntu:24.04
 LABEL maintainer="Marco Costa <marcocosta@gmx.com>"
-ENV REFRESHED_AT 2025-03-28
+ENV REFRESHED_AT=2025-03-28
+
 
 # Arguments to define PHP and phpMyAdmin versions (defaults: PHP 7.4, phpMyAdmin 5.1.1)
 ARG PHP_VERSION=7.4
@@ -18,7 +19,6 @@ ENV DEBIAN_FRONTEND=noninteractive \
     APACHE_RUN_DIR=/var/run/apache2 \
     APACHE_LOCK_DIR=/var/lock/apache2 \
     MYSQL_USER=root \
-    MYSQL_PASSWORD=root \
     PYTHONUNBUFFERED=1
 
 # Update repositories and install basic tools + Supervisor
@@ -78,7 +78,7 @@ RUN mkdir -p /run/mysqld && \
 COPY config/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY config/php/apache2-php.ini /etc/php/${PHP_VERSION}/apache2/php.ini
 COPY config/php/cli-php.ini /etc/php/${PHP_VERSION}/cli/php.ini
-COPY config/mariadb/my.cnf /etc/mysql/my.cnf
+COPY config/mariadb/custom.cnf /etc/mysql/mariadb.conf.d/custom.cnf
 COPY config/redis/redis.conf /etc/redis/redis.conf
 COPY config/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 COPY config/supervisor/apache2.conf /etc/supervisor/conf.d/apache2.conf
@@ -106,6 +106,12 @@ RUN apt-get -y autoremove && \
 
 # Volumes for persistence
 VOLUME ["/var/lib/mysql", "/app", "/var/log"]
+
+# Exposed ports (80: Apache, 3306: MariaDB, 6379: Redis)
+EXPOSE 80 3306 6379
+
+# Use start.sh as the entrypoint
+CMD ["/start.sh"]
 
 # Exposed ports (80: Apache, 3306: MariaDB, 6379: Redis)
 EXPOSE 80 3306 6379
