@@ -96,6 +96,15 @@ Access
     Redis: Port 16083 (or 8083)
     Additional Ports: 16081 (443), 16084 (8000), 16085 (9000), 16086 (10000) are mappable but require additional configuration for use (e.g., SSL for 443).
 
+Create user 'pma' for phpmyadmin:
+
+    docker exec -it docker-lamp-stack mariadb -u root -p
+
+    CREATE USER 'pma'@'%' IDENTIFIED BY 'password';
+    GRANT ALL PRIVILEGES ON *.* TO 'pma'@'%' WITH GRANT OPTION;
+    FLUSH PRIVILEGES;
+    exit
+    
 Logs
 
 Logs are available in the /var/log directory inside the container. With the -v ${PWD}/logs:/var/log volume, they are persisted to the logs directory on the host:
