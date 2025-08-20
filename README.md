@@ -74,6 +74,7 @@ Run the container with persistent volumes for the application, MySQL data, and l
    
       docker run --name "docker-lamp-stack" \
         -p "8080:80" -p "8082:3306" -p "8083:6379" \
+        -e MYSQL_PASSWORD=root \
         -v ${PWD}/app:/app -v ${PWD}/mysql:/var/lib/mysql \
         -v ${PWD}/logs:/var/log \
         docker-lamp-stack-74
@@ -83,6 +84,7 @@ Basic Example (without additional ports or logs):
     
        docker run --name "docker-lamp-stack" \
          -p "8080:80" -p "8082:3306" -p "8083:6379" \
+         -e MYSQL_PASSWORD=root \
          -v ${PWD}/app:/app -v ${PWD}/mysql:/var/lib/mysql \
          docker-lamp-stack
 
