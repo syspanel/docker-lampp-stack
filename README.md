@@ -127,7 +127,7 @@ Configuration files are located in the config/ directory:
 
 Supported PHP Versions
 
-Any version available in the ppa:ondrej/php repository (e.g., 7.0, 7.1, 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3). Optional extensions are installed if available; missing ones are skipped without failing the build.
+Any version available in the ppa:ondrej/php repository (e.g. 7.4, 8.0, 8.1, 8.2, 8.3). Optional extensions are installed if available; missing ones are skipped without failing the build.
 phpMyAdmin Fallback
 
 If the specified PHPMYADMIN_VERSION is not found, the build automatically falls back to version 5.2.1, ensuring compatibility with modern PHP versions.
