@@ -112,9 +112,3 @@ EXPOSE 80 3306 6379
 
 # Use start.sh as the entrypoint
 CMD ["/start.sh"]
-
-# Exposed ports (80: Apache, 3306: MariaDB, 6379: Redis)
-EXPOSE 80 3306 6379
-
-# Use start.sh as the entrypoint
-CMD ["/start.sh"]
