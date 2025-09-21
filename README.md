@@ -42,7 +42,7 @@ A flexible and robust LAMP (Linux, Apache, MySQL/MariaDB, PHP) stack Docker imag
 1. Clone or download this repository:
    ```bash
    git clone https://github.com/syspanel/docker-lamp-stack.git
-   cd docker-lamp-stack
+   cd docker-lampp-stack
 
     Build the Docker image with specific PHP and phpMyAdmin versions:
         PHP 7.4 with phpMyAdmin 5.1.1 (default):
