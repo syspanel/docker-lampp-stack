@@ -78,7 +78,7 @@ RUN mkdir -p /run/mysqld && \
 COPY config/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY config/php/apache2-php.ini /etc/php/${PHP_VERSION}/apache2/php.ini
 COPY config/php/cli-php.ini /etc/php/${PHP_VERSION}/cli/php.ini
-COPY config/mariadb/custom.cnf /etc/mysql/mariadb.conf.d/custom.cnf
+COPY config/mariadb/my.cnf /etc/mysql/mariadb.conf.d/custom.cnf
 COPY config/redis/redis.conf /etc/redis/redis.conf
 COPY config/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 COPY config/supervisor/apache2.conf /etc/supervisor/conf.d/apache2.conf
